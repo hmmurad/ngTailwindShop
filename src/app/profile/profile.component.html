@@ -1,0 +1,113 @@
+<div class="shadow-lg mx-auto justify-center items-center p-10 my-10 space-y-5">
+  <div class="flex justify-between">
+    <h2 class="text-xl font-medium">Profile</h2>
+    <a
+      routerLink="/profile"
+      [queryParams]="{ editMode: true }"
+      class="
+        flex
+        bg-indigo-600
+        text-white
+        font-medium
+        text-sm
+        py-1
+        px-3
+        space-x-3
+        rounded-full
+      "
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+        />
+      </svg>
+      <span>Edit</span>
+    </a>
+  </div>
+  <div class="flex">
+    Edit Mode:
+    <p
+      class="font-semibold uppercase text-md pl-5"
+      [ngClass]="{
+        'text-red-600': !editMode,
+        'text-green-500': editMode
+      }"
+    >
+      {{ editMode }}
+    </p>
+  </div>
+  <div class="grid grid-cols-2 gap-5 justify-between">
+    <div>
+      <form class="space-y-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="space-y-1 flex flex-col text-sm font-medium">
+          <label>{{ editMode ? "Enter" : "" }} Name :</label>
+          <span *ngIf="!editMode">Hosne Mobarak</span>
+          <input *ngIf="editMode" type="text" formControlName="name" />
+        </div>
+        <div class="space-y-2 flex flex-col text-sm font-medium">
+          <label>{{ editMode ? "Enter" : "" }} Image Url :</label>
+          <span *ngIf="!editMode">Hosne Mobarak</span>
+          <textarea
+            formControlName="imageUrl"
+            *ngIf="editMode"
+            name=""
+            id=""
+            cols="30"
+            rows="4"
+          ></textarea>
+        </div>
+        <div *ngIf="editMode" class="flex justify-center items-end space-x-10">
+          <button
+            type="submit"
+            class="
+              flex
+              bg-indigo-600
+              text-white
+              font-medium
+              text-sm
+              py-2
+              px-5
+              space-x-3
+              cursor-pointer
+              rounded-full
+              hover:bg-indigo-400 hover:text-gray-700
+            "
+          >
+            Update
+          </button>
+          <a
+            type="button"
+            (click)="onDiscard()"
+            class="
+              flex
+              bg-indigo-600
+              text-white
+              font-medium
+              text-sm
+              py-2
+              px-5
+              cursor-pointer
+              space-x-3
+              rounded-full
+            "
+            >Discard
+          </a>
+        </div>
+      </form>
+    </div>
+    <div>
+      <img
+        src="{{ form.value.imageUrl ? '' : 'https://fakeimg.pl/300/' }}"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

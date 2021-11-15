@@ -1,0 +1,210 @@
+<div
+  class="
+    bg-gray-100
+    mx-auto
+    px-5
+    py-3
+    flex flex-col
+    md:flex-row
+    space-x-6
+    justify-between
+    items-center
+  "
+>
+  <div class="justify-center flex">
+    <a
+      routerLink="/"
+      class="text-md font-medium text-center mr-10 text-indigo-600"
+      >Brand Logo</a
+    >
+    <div class="space-x-3 text-center" *ngIf="isLoggedIn">
+      <a class="text-md font-normal hover:text-indigo-600" routerLink="/"
+        >Shop</a
+      >
+    </div>
+  </div>
+  <div class="">
+    <a
+      class="
+        text-sm
+        border-2 border-indigo-600
+        hover:bg-indigo-600 hover:text-white
+        py-1
+        px-5
+        rounded-full
+        font-medium
+      "
+      *ngIf="!isLoggedIn"
+      routerLink="/auth"
+      >Login</a
+    >
+    <!-- This example requires Tailwind CSS v2.0+ -->
+
+    <div *ngIf="isLoggedIn">
+      <div class="dropdown inline-block relative">
+        <button class="cursor-pointer inline-flex items-center">
+          <span class="mr-1"
+            ><img
+              src="https://fakeimg.pl/400/"
+              class="rounded-full w-12"
+              alt=""
+          /></span>
+        </button>
+        <ul
+          class="
+            dropdown-menu
+            absolute
+            right-3
+            hidden
+            text-gray-700
+            pt-2
+            w-48
+            shadow-md
+            rounded-md
+          "
+        >
+          <li class="">
+            <a
+              class="
+                text-sm text-white
+                hover:text-gray-600
+                font-medium
+                py-2
+                hover:bg-gray-300
+                bg-gray-400
+                px-5
+                cursor-pointer
+                flex
+                whitespace-no-wrap
+              "
+              routerLink="/"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              <span>Products</span>
+            </a>
+          </li>
+          <li class="">
+            <a
+              class="
+                text-sm text-white
+                hover:text-gray-600
+                font-medium
+                py-2
+                hover:bg-gray-300
+                bg-gray-400
+                px-5
+                cursor-pointer
+                flex
+                whitespace-no-wrap
+              "
+              routerLink="/profile"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+              <span>View Profile</span>
+            </a>
+          </li>
+          <li class="">
+            <a
+              class="
+                text-sm text-white
+                hover:text-gray-600
+                font-medium
+                py-2
+                hover:bg-gray-300
+                bg-gray-400
+                px-5
+                cursor-pointer
+                flex
+                whitespace-no-wrap
+              "
+              routerLink="/profile"
+              [queryParams]="{ editMode: true }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
+              </svg>
+
+              <span> Edit Profile </span>
+            </a>
+          </li>
+          <li class="">
+            <a
+              class="
+                text-sm text-white
+                hover:text-gray-600
+                font-medium
+                py-2
+                hover:bg-gray-300
+                bg-gray-400
+                px-5
+                cursor-pointer
+                flex
+                whitespace-no-wrap
+              "
+              (click)="onLogout()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              <span> Log Out </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

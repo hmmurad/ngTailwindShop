@@ -1,14 +1,55 @@
-<div *ngIf="product" class="shadow-md p-3 my-5 space-y-2">
-  <img src="{{ product.imageUrl }}" alt="" />
-  <div>
-    <h2 class="text-md font-medium">{{ product.title }}</h2>
-    <p>Price : {{ product.price }}</p>
-    <p>Category: {{ product.category }}</p>
+<div
+  *ngIf="product"
+  class="relative shadow-md my-5 space-y-2 w-3/4 mx-auto rounded-lg"
+>
+  <img
+    src="{{ product.imageUrl }}"
+    class="w-full max-h-80 rounded-t-lg"
+    alt=""
+  />
+  <div
+    class="
+      absolute
+      top-0
+      right-0
+      rounded-full
+      p-3
+      w-12
+      h-12
+      bg-gray-400
+      text-green-600
+      hover:text-gray-800
+    "
+  >
+    <button type="button" [routerLink]="['/product/edit', id]">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+        />
+      </svg>
+    </button>
   </div>
-  <hr />
-  <div>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed cumque
-    voluptatem, magnam in, recusandae, eveniet iste repudiandae corporis impedit
-    voluptatum aut eum modi explicabo ut minima magni ex iusto accusantium.
+  <div class="p-5 space-y-3">
+    <div>
+      <h2 class="text-lg font-semibold">{{ product.title }}</h2>
+      <p class="text-sm font-medium">Price : {{ product.price }}</p>
+      <p class="text-sm font-medium">Category: {{ product.category }}</p>
+    </div>
+
+    <div>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed cumque
+      voluptatem, magnam in, recusandae, eveniet iste repudiandae corporis
+      impedit voluptatum aut eum modi explicabo ut minima magni ex iusto
+      accusantium.
+    </div>
   </div>
 </div>

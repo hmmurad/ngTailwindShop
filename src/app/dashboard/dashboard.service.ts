@@ -36,4 +36,26 @@ export class DashboardService {
       `https://eshop-d4997.firebaseio.com/products/${id}.json/`
     );
   }
+
+  addProduct(product) {
+    return this.http.post<any>(
+      `https://eshop-d4997.firebaseio.com/products.json`,
+      product
+    );
+  }
+
+  updateProduct(id: string, product) {
+    return this.http.patch(
+      `https://eshop-d4997.firebaseio.com/products/${id}.json/`,
+      product
+    );
+  }
+
+  deleteProduct(id: string) {
+    this.http
+      .delete(`https://eshop-d4997.firebaseio.com/products/${id}.json/`)
+      .subscribe((res) => {
+        this.getProducts();
+      });
+  }
 }

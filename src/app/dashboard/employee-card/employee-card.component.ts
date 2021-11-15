@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-employee-card',
@@ -8,7 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EmployeeCardComponent implements OnInit {
   @Input() product;
   @Input() id;
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {}
+
+  onDelete(id: string) {
+    this.dashboardService.deleteProduct(id);
+  }
 }

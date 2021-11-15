@@ -1,4 +1,15 @@
-<div class="shadow-lg mx-auto justify-center items-center p-10 my-10 space-y-5">
+<div
+  class="
+    shadow-lg
+    mx-auto
+    justify-center
+    items-center
+    w-3/4
+    p-10
+    my-10
+    space-y-5
+  "
+>
   <div class="flex justify-between">
     <h2 class="text-xl font-medium">Profile</h2>
     <a
@@ -44,17 +55,18 @@
       {{ editMode }}
     </p>
   </div>
-  <div class="grid grid-cols-2 gap-5 justify-between">
+  <div>
     <div>
       <form class="space-y-3" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="space-y-1 flex flex-col text-sm font-medium">
           <label>{{ editMode ? "Enter" : "" }} Name :</label>
-          <span *ngIf="!editMode">Hosne Mobarak</span>
+          <span class="text-indigo-700 text-xl" *ngIf="!editMode">{{
+            profileInfo.displayName ? profileInfo.displayName : "Username"
+          }}</span>
           <input *ngIf="editMode" type="text" formControlName="name" />
         </div>
         <div class="space-y-2 flex flex-col text-sm font-medium">
           <label>{{ editMode ? "Enter" : "" }} Image Url :</label>
-          <span *ngIf="!editMode">Hosne Mobarak</span>
           <textarea
             formControlName="imageUrl"
             *ngIf="editMode"
@@ -63,6 +75,16 @@
             cols="30"
             rows="4"
           ></textarea>
+          <img
+            *ngIf="!editMode"
+            class="w-56"
+            src="{{
+              profileInfo.photoUrl
+                ? profileInfo.photoUrl
+                : 'https://fakeimg.pl/300/'
+            }}"
+            alt="{{ profileInfo.displayName }}"
+          />
         </div>
         <div *ngIf="editMode" class="flex justify-center items-end space-x-10">
           <button
@@ -102,12 +124,6 @@
           </a>
         </div>
       </form>
-    </div>
-    <div>
-      <img
-        src="{{ form.value.imageUrl ? '' : 'https://fakeimg.pl/300/' }}"
-        alt=""
-      />
     </div>
   </div>
 </div>

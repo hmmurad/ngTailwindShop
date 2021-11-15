@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ViewProductComponent } from './dashboard/view-product/view-product.component';
 import { AddProductComponent } from './dashboard/add-product/add-product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   { path: 'auth', component: AuthComponent },
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: '/', pathMatch: 'full' },

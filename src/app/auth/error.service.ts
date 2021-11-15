@@ -31,5 +31,6 @@ export class ErrorService {
       'The users credential is no longer valid. The user must sign in again.',
     USER_NOT_FOUND:
       'There is no user record corresponding to this identifier. The user may have been deleted.',
+    WEAK_PASSWORD: 'The password must be 6 characters long or more.',
   };
 }

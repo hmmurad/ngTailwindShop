@@ -32,9 +32,7 @@ export class AuthService {
     private http: HttpClient,
     private _error: ErrorService,
     private router: Router
-  ) {
-    this.autoLogin();
-  }
+  ) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -161,7 +159,24 @@ export class AuthService {
         }
       )
       .subscribe((res) => {
-        console.log(res);
+        this.profileInfo.next({
+          displayName: res.users[0].displayName,
+          email: res.users[0].email,
+          photoUrl: res.users[0].photoUrl,
+        });
       });
+  }
+
+  changePassword(data) {
+    return this.http
+      .post<any>(
+        `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${this.apikey}`,
+        {
+          idToken: data.idToken,
+          password: data.password,
+          returnSecureToken: true,
+        }
+      )
+      .pipe(catchError((err) => this._error.handleError(err)));
   }
 }

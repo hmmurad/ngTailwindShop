@@ -45,8 +45,18 @@
         <button class="cursor-pointer inline-flex items-center">
           <span class="mr-1"
             ><img
-              src="https://fakeimg.pl/400/"
-              class="rounded-full w-12"
+              *ngIf="profileInfo"
+              src="{{
+                profileInfo.photoUrl
+                  ? profileInfo.photoUrl
+                  : 'https://fakeimg.pl/400/'
+              }}"
+              class="
+                rounded-full
+                w-12
+                h-12
+                ring-2 ring-indigo-600 ring-offset-2
+              "
               alt=""
           /></span>
         </button>
@@ -168,6 +178,39 @@
               </svg>
 
               <span> Edit Profile </span>
+            </a>
+          </li>
+          <li class="">
+            <a
+              class="
+                text-sm text-white
+                hover:text-gray-600
+                font-medium
+                py-2
+                hover:bg-gray-300
+                bg-gray-400
+                px-5
+                cursor-pointer
+                flex
+                whitespace-no-wrap
+              "
+              [routerLink]="['/change-password']"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              <span> Change Password</span>
             </a>
           </li>
           <li class="">

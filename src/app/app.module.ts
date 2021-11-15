@@ -14,6 +14,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AddProductComponent } from './dashboard/add-product/add-product.component';
 import { ViewProductComponent } from './dashboard/view-product/view-product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
     AddProductComponent,
     ViewProductComponent,
     ProfileComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

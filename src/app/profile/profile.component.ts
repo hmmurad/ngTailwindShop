@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   form: FormGroup;
   editMode: boolean = false;
   token = JSON.parse(localStorage.getItem('currentUser'))._token;
+  profileInfo;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -33,6 +34,14 @@ export class ProfileComponent implements OnInit {
         this.editMode = false;
       }
     });
+
+    this._auth.profileInfo.subscribe((res) => {
+      this.profileInfo = res;
+      this.form.setValue({
+        name: res.displayName,
+        imageUrl: res.photoUrl,
+      });
+    });
   }
 
   onSubmit() {
@@ -44,6 +53,10 @@ export class ProfileComponent implements OnInit {
       this._auth.updateProfile(uData).subscribe(
         (data) => {
           console.log(data);
+          this._auth.getProfileInfo(this.token);
+          this.router.navigate(['/profile'], {
+            queryParams: { editMode: null },
+          });
         },
         (err) => {
           console.log(err);
